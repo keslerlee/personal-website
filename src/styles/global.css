@@ -168,6 +168,36 @@ body {
     @apply bg-bg-active border-accent-red;
 }
 
+
 .markdown-alert-caution .markdown-alert-title {
     @apply text-accent-red;
+}
+
+/* Layout Grid System */
+.layout-grid-open {
+    display: grid;
+    grid-template-columns: 48px 300px 1fr;
+}
+
+.layout-grid-closed {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+}
+
+@media (max-width: 800px) {
+    .layout-grid-open {
+        grid-template-columns: 48px 1fr 0px;
+    }
+
+    .layout-grid-open #sidebar {
+        min-width: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Hide the main content area when sidebar is open on mobile */
+    .layout-grid-open>div:last-child {
+        display: none;
+        /* or visibility: hidden if we want to keep state? display: none is safer for layout */
+    }
 }

@@ -39,21 +39,37 @@ interface Props {
     const sidebarHidden = localStorage.getItem("sidebarHidden") === "true";
     if (sidebarHidden) {
         sidebar?.classList.add("hidden");
-        mainGrid?.classList.remove("grid-cols-[48px_300px_1fr]");
-        mainGrid?.classList.add("grid-cols-[48px_1fr]");
+        mainGrid?.classList.remove("layout-grid-open");
+        mainGrid?.classList.add("layout-grid-closed");
+
+        // Ensure button is muted
+        explorerBtn?.classList.add("text-text-muted");
+        explorerBtn?.classList.remove("text-text-bright");
+    } else {
+        // Sidebar is visible, make button bright
+        explorerBtn?.classList.remove("text-text-muted");
+        explorerBtn?.classList.add("text-text-bright");
     }
 
     explorerBtn?.addEventListener("click", () => {
         const isHidden = sidebar?.classList.toggle("hidden");
         localStorage.setItem("sidebarHidden", String(isHidden));
 
-        // Toggle grid columns
+        // Toggle grid columns and button state
         if (isHidden) {
-            mainGrid?.classList.remove("grid-cols-[48px_300px_1fr]");
-            mainGrid?.classList.add("grid-cols-[48px_1fr]");
+            mainGrid?.classList.remove("layout-grid-open");
+            mainGrid?.classList.add("layout-grid-closed");
+
+            // Set button to inactive
+            explorerBtn.classList.remove("text-text-bright");
+            explorerBtn.classList.add("text-text-muted");
         } else {
-            mainGrid?.classList.remove("grid-cols-[48px_1fr]");
-            mainGrid?.classList.add("grid-cols-[48px_300px_1fr]");
+            mainGrid?.classList.remove("layout-grid-closed");
+            mainGrid?.classList.add("layout-grid-open");
+
+            // Set button to active
+            explorerBtn.classList.remove("text-text-muted");
+            explorerBtn.classList.add("text-text-bright");
         }
     });
 </script>
