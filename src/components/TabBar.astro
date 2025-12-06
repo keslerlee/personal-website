@@ -1,6 +1,6 @@
 ---
 interface Props {
-  currentPage: 'home' | 'projects' | 'about';
+  currentPage: 'home' | 'projects' | 'about' | 'blank';
 }
 
 const { currentPage } = Astro.props;
@@ -19,7 +19,7 @@ const tabs = [
       data-tab={tab.page}
       data-href={tab.href}
       class:list={[
-        "tab-item flex items-center gap-2 pl-4 pr-4 py-4 text-sm border-border cursor-pointer",
+        "tab-item flex items-center gap-2 pl-3 pr-2.5 py-4 text-sm border-border cursor-pointer",
         currentPage === tab.page 
           ? "bg-bg-main text-text-bright border-b-1 border-b-indigo-400" 
           : "bg-bg-dark text-text-muted hover:bg-bg-hover"
@@ -130,7 +130,31 @@ const tabs = [
     });
   });
 
+  // Ensure current page tab is open
+  function ensureCurrentTabOpen() {
+    const tabBar = document.getElementById('tab-bar');
+    const currentPage = tabBar?.dataset.currentPage;
+    if (!currentPage || currentPage === 'blank') return;
+
+    const closedTabs = getClosedTabs();
+    const index = closedTabs.indexOf(currentPage);
+    
+    if (index > -1) {
+      // Remove from closed tabs
+      closedTabs.splice(index, 1);
+      saveClosedTabs(closedTabs);
+      
+      // Make sure it's visible (might have been hidden by preload script)
+      const tab = document.querySelector(`.tab-item[data-tab="${currentPage}"]`) as HTMLElement;
+      if (tab) {
+        tab.style.display = '';
+        tab.style.removeProperty('display');
+      }
+    }
+  }
+
   // Apply on load
+  ensureCurrentTabOpen();
   applyClosedTabs();
 </script>
 

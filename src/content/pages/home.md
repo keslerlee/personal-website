@@ -9,5 +9,5 @@ Hi, I'm **Kesler Lee**, a Software Engineer and Machine Learning Engineer. I’m
 
 ## What You'll Find Here
 
-- **Projects** — A showcase of my work and side projects
-- **About** — Learn more about my background and skills
+[Projects](/projects/) - A showcase of my work and side projects  
+[About](/about/) - Learn more about my background and skills
