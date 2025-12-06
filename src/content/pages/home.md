@@ -5,11 +5,7 @@ order: 1
 
 # Welcome to My Portfolio
 
-Hi, I'm **Kesler Lee** — a developer passionate about building great software. 
-This website is styled to look like VSCode with the One Dark Pro theme.
-
-> [!IMPORTANT]
-> This is a personal portfolio website. Feel free to explore my projects and learn more about me!
+Hi, I'm **Kesler Lee**, a Software Engineer and Machine Learning Engineer. I’m passionate about building scalable data pipelines and machine learning.
 
 ## What You'll Find Here
 
