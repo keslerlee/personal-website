@@ -80,7 +80,7 @@ body {
 }
 
 .prose strong {
-    @apply text-accent-orange font-bold;
+    @apply text-indigo-400 font-semibold;
 }
 
 .prose ul {
