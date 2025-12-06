@@ -7,6 +7,8 @@ order: 2
 
 Here are some of the projects I've worked on. Each project represents my passion for building useful and well-crafted software.
 
+---
+
 ## Personal Website
 
 **Tech Stack:** Astro, Tailwind CSS
