@@ -84,6 +84,11 @@ const files = [
   // Reopen tabs when clicking files in sidebar
   document.querySelectorAll('.sidebar-file').forEach((fileLink) => {
     fileLink.addEventListener('click', () => {
+      // Auto-close sidebar on mobile
+      if (window.innerWidth < 800) {
+        document.getElementById('explorer-toggle')?.click();
+      }
+
       const tabName = (fileLink as HTMLElement).dataset.file;
       if (!tabName) return;
       
