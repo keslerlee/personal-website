@@ -1,0 +1,104 @@
+---
+interface Props {
+  currentPage: 'home' | 'projects' | 'about';
+}
+
+const { currentPage } = Astro.props;
+
+const files = [
+  { name: 'Home.md', page: 'home', href: '/' },
+  { name: 'Projects.md', page: 'projects', href: '/projects' },
+  { name: 'About.md', page: 'about', href: '/about' },
+];
+---
+
+<aside class="h-full bg-bg-sidebar flex flex-col">
+  <!-- Explorer Header -->
+  <div class="px-4 py-2 text-[11px] font-medium text-text-accent tracking-wide">
+    Explorer
+  </div>
+  
+  <!-- Folder Section -->
+  <div class="flex-1">
+    <button 
+      id="folder-toggle"
+      class="w-full flex items-center gap-1 px-2 py-1 hover:bg-bg-hover cursor-pointer text-sm text-left"
+    >
+      <!-- Chevron -->
+      <svg id="chevron" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+      <!-- Folder -->
+      <svg class="w-4 h-4 text-accent-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+      </svg>
+      <span>kesler-personal-website</span>
+    </button>
+    
+    <!-- Files -->
+    <div id="files-container" class="ml-7">
+      {files.map((file) => (
+        <a 
+          href={file.href}
+          data-file={file.page}
+          class:list={[
+            "sidebar-file flex items-center gap-2 px-2 py-1 text-sm cursor-pointer",
+            currentPage === file.page 
+              ? "bg-bg-active text-text-bright" 
+              : "text-text hover:bg-bg-hover"
+          ]}
+        >
+          <!-- File Icon -->
+          <svg class="w-4 h-4 text-accent-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+            <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+          </svg>
+          <span>{file.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</aside>
+
+<script>
+  const toggle = document.getElementById('folder-toggle');
+  const files = document.getElementById('files-container');
+  const chevron = document.getElementById('chevron');
+  
+  // Remove the preload styles so we can toggle properly
+  document.getElementById('preload-styles')?.remove();
+  
+  // Restore state from localStorage
+  const folderClosed = localStorage.getItem('folderClosed') === 'true';
+  if (folderClosed) {
+    files?.classList.add('hidden');
+    chevron?.classList.add('-rotate-90');
+  }
+  
+  toggle?.addEventListener('click', () => {
+    const isClosed = files?.classList.toggle('hidden');
+    chevron?.classList.toggle('-rotate-90', isClosed);
+    localStorage.setItem('folderClosed', String(isClosed));
+  });
+
+  // Reopen tabs when clicking files in sidebar
+  document.querySelectorAll('.sidebar-file').forEach((fileLink) => {
+    fileLink.addEventListener('click', () => {
+      const tabName = (fileLink as HTMLElement).dataset.file;
+      if (!tabName) return;
+      
+      // Remove from closedTabs in localStorage
+      try {
+        const stored = localStorage.getItem('closedTabs');
+        const closedTabs: string[] = stored ? JSON.parse(stored) : [];
+        const index = closedTabs.indexOf(tabName);
+        if (index > -1) {
+          closedTabs.splice(index, 1);
+          localStorage.setItem('closedTabs', JSON.stringify(closedTabs));
+        }
+      } catch {
+        // Ignore errors
+      }
+    });
+  });
+</script>

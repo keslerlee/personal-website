@@ -1,0 +1,52 @@
+---
+
+---
+
+<aside class="h-full bg-bg-sidebar flex flex-col">
+    <!-- Agent Header -->
+    <div
+        class="px-4 py-2 text-[11px] font-medium text-text-muted uppercase tracking-wide"
+    >
+        Agent
+    </div>
+
+    <!-- Chat Area -->
+    <div class="flex-1 flex flex-col p-3 gap-3 overflow-auto">
+        <!-- Sample Messages -->
+        <div class="bg-bg-active rounded-lg p-3 text-sm text-text">
+            <div class="text-accent-purple text-xs mb-1">Assistant</div>
+            <p>Hello! I'm your AI assistant. How can I help you today?</p>
+        </div>
+
+        <div
+            class="bg-bg-hover rounded-lg p-3 text-sm text-text self-end max-w-[85%]"
+        >
+            <div class="text-accent-blue text-xs mb-1">You</div>
+            <p>Tell me about this website.</p>
+        </div>
+
+        <div class="bg-bg-active rounded-lg p-3 text-sm text-text">
+            <div class="text-accent-purple text-xs mb-1">Assistant</div>
+            <p>
+                This is Kesler's personal portfolio website, styled to look like
+                VSCode with the One Dark Pro theme!
+            </p>
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="p-3 border-t border-border">
+        <div class="flex items-center gap-2 bg-bg-active rounded-lg px-3 py-2">
+            <span class="text-accent-green">❯</span>
+            <input
+                type="text"
+                placeholder="Ask me anything..."
+                class="flex-1 bg-transparent text-text text-sm outline-none placeholder:text-text-muted"
+                disabled
+            />
+        </div>
+        <p class="text-[10px] text-text-muted mt-2 text-center">
+            Agent coming soon...
+        </p>
+    </div>
+</aside>

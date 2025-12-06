@@ -1,0 +1,136 @@
+---
+interface Props {
+  currentPage: 'home' | 'projects' | 'about';
+}
+
+const { currentPage } = Astro.props;
+
+const tabs = [
+  { name: 'Home.md', page: 'home', href: '/' },
+  { name: 'Projects.md', page: 'projects', href: '/projects' },
+  { name: 'About.md', page: 'about', href: '/about' },
+];
+---
+
+<div id="tab-bar" class="flex bg-bg-dark border-border" data-current-page={currentPage}>
+  {tabs.map((tab) => (
+    <a 
+      href={tab.href}
+      data-tab={tab.page}
+      data-href={tab.href}
+      class:list={[
+        "tab-item flex items-center gap-2 pl-4 pr-4 py-2 text-sm border-border cursor-pointer",
+        currentPage === tab.page 
+          ? "bg-bg-main text-text-bright border-b-1 border-b-white" 
+          : "bg-bg-dark text-text-muted hover:bg-bg-hover"
+      ]}
+    >
+      <!-- File Code Icon -->
+      <svg class="w-4 h-4 text-accent-gray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      </svg>
+      <span>{tab.name}</span>
+      <button 
+        class:list={[
+          "tab-close ml-0 p-0 rounded hover:bg-bg-hover",
+          currentPage === tab.page 
+            ? "text-white hover:text-white" 
+            : "text-text-muted hover:text-text"
+        ]}
+        data-tab={tab.page}
+      >
+        <!-- X Icon -->
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </a>
+  ))}
+</div>
+
+<script>
+  const allTabs = ['home', 'projects', 'about'];
+  const tabHrefs: Record<string, string> = {
+    'home': '/',
+    'projects': '/projects',
+    'about': '/about'
+  };
+
+  // Get closed tabs from localStorage
+  function getClosedTabs(): string[] {
+    try {
+      const stored = localStorage.getItem('closedTabs');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  // Save closed tabs to localStorage
+  function saveClosedTabs(tabs: string[]) {
+    localStorage.setItem('closedTabs', JSON.stringify(tabs));
+  }
+
+  // Get list of open tabs
+  function getOpenTabs(): string[] {
+    const closedTabs = getClosedTabs();
+    return allTabs.filter(tab => !closedTabs.includes(tab));
+  }
+
+  // Apply closed state to tabs
+  function applyClosedTabs() {
+    const closedTabs = getClosedTabs();
+    document.querySelectorAll('.tab-item').forEach((tab) => {
+      const tabName = (tab as HTMLElement).dataset.tab;
+      if (tabName && closedTabs.includes(tabName)) {
+        (tab as HTMLElement).style.display = 'none';
+      }
+    });
+  }
+
+  // Handle close button clicks
+  document.querySelectorAll('.tab-close').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const tabName = (btn as HTMLElement).dataset.tab;
+      if (!tabName) return;
+      
+      // Get current page from tab-bar data attribute
+      const tabBar = document.getElementById('tab-bar');
+      const currentPage = tabBar?.dataset.currentPage;
+      
+      // Hide the tab
+      const tab = document.querySelector(`.tab-item[data-tab="${tabName}"]`) as HTMLElement;
+      if (tab) {
+        tab.style.display = 'none';
+      }
+      
+      // Save to localStorage
+      const closedTabs = getClosedTabs();
+      if (!closedTabs.includes(tabName)) {
+        closedTabs.push(tabName);
+        saveClosedTabs(closedTabs);
+      }
+      
+      // If we closed the active tab, navigate to another open tab
+      if (tabName === currentPage) {
+        const openTabs = getOpenTabs();
+        if (openTabs.length > 0) {
+          // Navigate to the first open tab
+          window.location.href = tabHrefs[openTabs[0]];
+        } else {
+          // No tabs open, go to blank page
+          window.location.href = '/blank';
+        }
+      }
+    });
+  });
+
+  // Apply on load
+  applyClosedTabs();
+</script>
+

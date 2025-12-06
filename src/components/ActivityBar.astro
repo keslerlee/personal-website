@@ -1,0 +1,59 @@
+---
+interface Props {
+    onToggleSidebar?: boolean;
+}
+---
+
+<div
+    class="h-full w-12 bg-bg-main flex flex-col items-center py-2 border-border"
+>
+    <!-- Explorer Button -->
+    <button
+        id="explorer-toggle"
+        class="w-10 h-10 flex items-center justify-center text-text-muted hover:text-text-bright rounded cursor-pointer"
+        title="Explorer"
+    >
+        <svg
+            class="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+        >
+            <path
+                d="M3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V9C21 7.89543 20.1046 7 19 7H13L11 5H5C3.89543 5 3 5.89543 3 7Z"
+            ></path>
+        </svg>
+    </button>
+</div>
+
+<script>
+    const explorerBtn = document.getElementById("explorer-toggle");
+    const sidebar = document.getElementById("sidebar");
+    const mainGrid = document.getElementById("main-grid");
+
+    // Remove the preload styles so we can toggle properly
+    document.getElementById("preload-styles")?.remove();
+
+    // Apply state from localStorage via classes
+    const sidebarHidden = localStorage.getItem("sidebarHidden") === "true";
+    if (sidebarHidden) {
+        sidebar?.classList.add("hidden");
+        mainGrid?.classList.remove("grid-cols-[48px_300px_1fr]");
+        mainGrid?.classList.add("grid-cols-[48px_1fr]");
+    }
+
+    explorerBtn?.addEventListener("click", () => {
+        const isHidden = sidebar?.classList.toggle("hidden");
+        localStorage.setItem("sidebarHidden", String(isHidden));
+
+        // Toggle grid columns
+        if (isHidden) {
+            mainGrid?.classList.remove("grid-cols-[48px_300px_1fr]");
+            mainGrid?.classList.add("grid-cols-[48px_1fr]");
+        } else {
+            mainGrid?.classList.remove("grid-cols-[48px_1fr]");
+            mainGrid?.classList.add("grid-cols-[48px_300px_1fr]");
+        }
+    });
+</script>

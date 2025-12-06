@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import ActivityBar from "../components/ActivityBar.astro";
+import Sidebar from "../components/Sidebar.astro";
+import TabBar from "../components/TabBar.astro";
+
+interface Props {
+    title: string;
+    currentPage: "home" | "projects" | "about";
+}
+
+const { title, currentPage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title} - Kesler</title>
+        <meta name="description" content="Personal website of Kesler Lee" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <script is:inline>
+            (function () {
+                const sidebarHidden =
+                    localStorage.getItem("sidebarHidden") === "true";
+                const folderClosed =
+                    localStorage.getItem("folderClosed") === "true";
+                const closedTabs = (() => {
+                    try {
+                        const stored = localStorage.getItem("closedTabs");
+                        return stored ? JSON.parse(stored) : [];
+                    } catch {
+                        return [];
+                    }
+                })();
+
+                const style = document.createElement("style");
+                style.id = "preload-styles";
+                if (sidebarHidden) {
+                    style.textContent =
+                        "#sidebar { display: none !important; } #main-grid { grid-template-columns: 48px 1fr !important; }";
+                }
+                if (folderClosed) {
+                    style.textContent +=
+                        " #files-container { display: none !important; } #chevron { transform: rotate(-90deg) !important; }";
+                }
+                if (closedTabs.length > 0) {
+                    closedTabs.forEach((tab) => {
+                        style.textContent += ` .tab-item[data-tab="${tab}"] { display: none !important; }`;
+                    });
+                }
+                document.head.appendChild(style);
+            })();
+        </script>
+    </head>
+    <body class="h-screen overflow-hidden">
+        <div id="main-grid" class="h-full grid grid-cols-[48px_300px_1fr]">
+            <!-- Activity Bar -->
+            <ActivityBar />
+
+            <!-- Sidebar - File Explorer -->
+            <div id="sidebar">
+                <Sidebar currentPage={currentPage} />
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="flex flex-col min-h-0 border-border">
+                <TabBar currentPage={currentPage} />
+                <main
+                    class="flex-1 min-h-0 overflow-auto p-6 bg-bg-main flex justify-center"
+                >
+                    <div class="w-full max-w-3xl">
+                        <slot />
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

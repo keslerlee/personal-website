@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* One Dark Pro Color Scheme */
+@theme {
+    --color-bg-dark: #1e2227;
+    --color-bg-main: #282c34;
+    --color-bg-sidebar: #21252b;
+    --color-bg-active: #2c313a;
+    --color-bg-hover: #3e4451;
+
+    --color-text: #abb2bf;
+    --color-text-muted: #5c6370;
+    --color-text-bright: #d7dae0;
+
+    --color-accent-blue: #61afef;
+    --color-accent-purple: #c678dd;
+    --color-accent-green: #98c379;
+    --color-accent-yellow: #e5c07b;
+    --color-accent-orange: #d19a66;
+    --color-accent-red: #e06c75;
+    --color-accent-cyan: #56b6c2;
+
+    --color-border: #3e4451;
+}
+
+/* Base styles */
+body {
+    @apply bg-bg-main text-text font-sans;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Custom Scrollbar - VSCode style */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-bg-hover);
+    border-radius: 0 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--color-bg-main);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-bg-hover) var(--color-bg-main);
+}
+
+/* Markdown Prose Styling */
+.prose {
+    @apply text-text leading-relaxed pt-20 pb-20;
+}
+
+.prose h1 {
+    @apply text-3xl font-bold text-text-bright mb-6 mt-0;
+}
+
+.prose h2 {
+    @apply text-xl font-semibold text-text-bright mt-8 mb-4;
+}
+
+.prose h3 {
+    @apply text-lg font-medium text-accent-purple mt-6 mb-2;
+}
+
+.prose p {
+    @apply mb-4;
+}
+
+.prose strong {
+    @apply text-accent-blue font-semibold;
+}
+
+.prose ul {
+    @apply mb-4 pl-6 list-disc;
+}
+
+.prose ol {
+    @apply mb-4 pl-6 list-decimal;
+}
+
+.prose li {
+    @apply mb-1;
+}
+
+.prose a {
+    @apply text-accent-blue hover:underline;
+}
+
+.prose code:not(pre code) {
+    @apply bg-bg-dark text-accent-orange px-1.5 py-0.5 rounded text-sm;
+}
+
+.prose pre {
+    @apply bg-bg-dark rounded-lg p-4 mb-6 border border-border overflow-x-auto;
+}
+
+.prose pre code {
+    @apply text-text text-sm font-mono;
+}
+
+.prose hr {
+    @apply border-border my-6;
+}
+
+/* GitHub-style Alert Boxes */
+.markdown-alert {
+    @apply border-l-4 rounded-r-lg p-4 mb-6;
+}
+
+.markdown-alert-title {
+    @apply font-semibold text-sm mb-1 flex items-center gap-2;
+}
+
+.markdown-alert-title svg {
+    fill: currentColor;
+}
+
+.markdown-alert p {
+    @apply text-sm mb-0;
+}
+
+.markdown-alert-note {
+    @apply bg-bg-active border-accent-blue;
+}
+
+.markdown-alert-note .markdown-alert-title {
+    @apply text-accent-blue;
+}
+
+.markdown-alert-tip {
+    @apply bg-bg-active border-accent-green;
+}
+
+.markdown-alert-tip .markdown-alert-title {
+    @apply text-accent-green;
+}
+
+.markdown-alert-important {
+    @apply bg-bg-active border-accent-orange;
+}
+
+.markdown-alert-important .markdown-alert-title {
+    @apply text-accent-orange;
+}
+
+.markdown-alert-warning {
+    @apply bg-bg-active border-accent-yellow;
+}
+
+.markdown-alert-warning .markdown-alert-title {
+    @apply text-accent-yellow;
+}
+
+.markdown-alert-caution {
+    @apply bg-bg-active border-accent-red;
+}
+
+.markdown-alert-caution .markdown-alert-title {
+    @apply text-accent-red;
+}
