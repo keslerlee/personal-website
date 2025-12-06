@@ -36,13 +36,13 @@ const files = [
     </button>
     
     <!-- Files -->
-    <div id="files-container" class="ml-7">
+    <div id="files-container" class="">
       {files.map((file) => (
         <a 
           href={file.href}
           data-file={file.page}
           class:list={[
-            "sidebar-file flex items-center gap-2 px-2 py-1 text-sm cursor-pointer",
+            "sidebar-file flex items-center gap-2 pl-9 pr-2 py-1 text-sm cursor-pointer",
             currentPage === file.page 
               ? "bg-bg-active text-text-bright" 
               : "text-text hover:bg-bg-hover"
