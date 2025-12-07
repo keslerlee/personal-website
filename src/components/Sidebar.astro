@@ -22,7 +22,7 @@ const files = [
   <div class="flex-1">
     <button 
       id="folder-toggle"
-      class="w-full flex items-center gap-1 px-2 py-1 hover:bg-bg-hover cursor-pointer text-sm text-left"
+      class="w-full flex items-center gap-1 px-2 py-2 hover:bg-bg-hover cursor-pointer text-sm text-left"
     >
       <!-- Chevron -->
       <svg id="chevron" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -42,7 +42,7 @@ const files = [
           href={file.href}
           data-file={file.page}
           class:list={[
-            "sidebar-file flex items-center gap-2 pl-9 pr-2 py-1 text-sm cursor-pointer",
+            "sidebar-file flex items-center gap-2 pl-9 pr-2 py-2 text-sm cursor-pointer",
             currentPage === file.page 
               ? "bg-bg-active text-text-bright" 
               : "text-text hover:bg-bg-hover"
