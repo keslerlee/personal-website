@@ -5,7 +5,7 @@ order: 1
 
 # Welcome To My Repository
 
-Hi, I'm Kesler, a Software & Machine Learning Engineer. I’m passionate about building scalable data pipelines and machine learning.
+Hi, I’m Kesler, a junior studying Computer Science at Arizona State University. My technical interests lie in data pipelines and machine learning, with a focus on resilient and scalable software that adapts to new challenges.
 
 ## What You'll Find Here
 
