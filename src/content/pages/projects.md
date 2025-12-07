@@ -11,21 +11,23 @@ Here are some of the projects I've worked on.
 
 ## Personal Website
 
-**Tech Stack:** Astro, Tailwind CSS
+A VSCode-inspired personal website built with Astro and Tailwind CSS. Interestingly, each page here is an actual markdown file in the code.
 
-A VSCode-inspired personal website built with Astro and Tailwind CSS.
+Github: <a href="https://github.com/keslerlee/personal-website" target="_blank">Link</a>
 
-`Website` `Design`
+`Website` `Design` `Astro` `Tailwind CSS` `Markdown` `Javascript` `Typescript` 
 
 ---
 
 ## Minecraft Mods
 
-**Tech Stack:** Javascript, Java
+Six client-side mods for Minecraft 1.8.9 in Hypixel Skyblock, which must be used with the <a href="https://chattriggers.com" target="_blank">ChatTriggers</a> mod. Over 1,000 total downloads.
 
-6 client-side mods to be used in Minecraft Hypixel Skyblock.
+Download from ChatTriggers: <a href="https://chattriggers.com/modules/v/AutoKick" target="_blank">AutoKick</a>, <a href="https://chattriggers.com/modules/v/RouteLoader" target="_blank">RouteLoader</a>, <a href="https://chattriggers.com/modules/v/SetFov" target="_blank">SetFov</a>
 
-`Minecraft` `Client`
+View on Github: <a href="https://github.com/keslerlee/AutoKick" target="_blank">AutoKick</a>, <a href="https://github.com/keslerlee/RouteLoader" target="_blank">RouteLoader</a>, <a href="https://github.com/keslerlee/QuickPet" target="_blank">QuickPet</a>, <a href="https://github.com/keslerlee/AnvilEnchants" target="_blank">AnvilEnchants</a>, <a href="https://github.com/keslerlee/ToggleSprint" target="_blank">ToggleSprint</a>
+
+`Minecraft` `Client` `Javascript` `Java`
 
 > [!TIP]
 > Want to see more? Check out my GitHub for additional projects and contributions!
