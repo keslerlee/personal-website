@@ -4,10 +4,10 @@ order: 3
 ---
 
 <div class="flex items-center gap-6 mb-8">
-  <img src="/profile.jpg" alt="Profile Picture" width="128" class="rounded-full"/>
+  <img src="/profile.jpg" alt="Profile Picture" width="200" class="rounded-full"/>
   <div>
     <h1 class="text-3xl font-bold text-text-bright">About Me</h1>
-    <p class="text-text-bright">Software & ML Engineer</p>
+    <p>CS Student<br/>Arizona State University<br/>Software & ML Engineer</p>
     <div class="flex gap-4 mt-4">
   <a href="mailto:kesler@keslerlee.com" class="!text-neutral-200 hover:!text-accent-blue no-underline hover:no-underline">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -25,4 +25,4 @@ order: 3
   </div>
 </div>
 
-I’m **Kesler Lee**, a junior studying Computer Science at Arizona State University. I’m passionate about building scalable data pipelines and machine learning.
+I’m Kesler, a junior studying Computer Science at Arizona State University. My technical interests lie in data pipelines and machine learning, with a focus on resilient and scalable software that adapts to new challenges.

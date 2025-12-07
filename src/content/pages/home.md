@@ -5,7 +5,7 @@ order: 1
 
 # Welcome To My Repository
 
-Hi, I'm **Kesler Lee**, a Software & Machine Learning Engineer. I’m passionate about building scalable data pipelines and machine learning.
+Hi, I'm Kesler, a Software & Machine Learning Engineer. I’m passionate about building scalable data pipelines and machine learning.
 
 ## What You'll Find Here
 
