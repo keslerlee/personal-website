@@ -10,5 +10,5 @@ order: 1
  - [Projects](/projects): A showcase of my work and side projects  
  - [About](/about): Learn more about my background and skills
 
->> [!TIP]
+>> [!IMPORTANT]
 >> This website is best viewed on a desktop, in case you aren't right now.

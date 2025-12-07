@@ -149,11 +149,11 @@ body {
 }
 
 .markdown-alert-important {
-    @apply bg-bg-active border-accent-orange;
+    @apply bg-bg-active border-accent-purple;
 }
 
 .markdown-alert-important .markdown-alert-title {
-    @apply text-accent-orange;
+    @apply text-accent-purple;
 }
 
 .markdown-alert-warning {
@@ -184,7 +184,7 @@ body {
     grid-template-columns: 48px 1fr;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
     .layout-grid-open {
         grid-template-columns: 48px 1fr 0px;
     }

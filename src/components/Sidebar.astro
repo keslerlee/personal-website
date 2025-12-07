@@ -85,7 +85,7 @@ const files = [
   document.querySelectorAll('.sidebar-file').forEach((fileLink) => {
     fileLink.addEventListener('click', () => {
       // Auto-close sidebar on mobile
-      if (window.innerWidth <= 700) {
+      if (window.matchMedia('(max-width: 750px)').matches) {
         document.getElementById('explorer-toggle')?.click();
       }
 
