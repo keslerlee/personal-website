@@ -156,5 +156,20 @@ const tabs = [
   // Apply on load
   ensureCurrentTabOpen();
   applyClosedTabs();
+
+  // Scroll persistence for tab bar
+  const tabBar = document.getElementById('tab-bar');
+  const tabBarScrollKey = 'tab-bar-scroll';
+  
+  if (tabBar) {
+    const savedScroll = sessionStorage.getItem(tabBarScrollKey);
+    if (savedScroll) {
+      tabBar.scrollLeft = parseInt(savedScroll, 10);
+    }
+    
+    tabBar.addEventListener('scroll', () => {
+      sessionStorage.setItem(tabBarScrollKey, tabBar.scrollLeft.toString());
+    });
+  }
 </script>
 

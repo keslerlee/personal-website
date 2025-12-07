@@ -52,6 +52,22 @@ const { title, currentPage } = Astro.props;
                 }
                 document.head.appendChild(style);
             })();
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const main = document.querySelector("main");
+                const path = window.location.pathname;
+                const scrollKey = `content-scroll-${path}`;
+                const savedScroll = sessionStorage.getItem(scrollKey);
+                if (savedScroll && main) {
+                    main.scrollTop = parseInt(savedScroll, 10);
+                }
+                main?.addEventListener("scroll", () => {
+                    sessionStorage.setItem(
+                        scrollKey,
+                        main.scrollTop.toString(),
+                    );
+                });
+            });
         </script>
     </head>
     <body class="h-screen overflow-hidden">
