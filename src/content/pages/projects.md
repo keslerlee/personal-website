@@ -11,7 +11,7 @@ Here are some of the projects I've worked on.
 
 ## Personal Website
 
-A VSCode-inspired personal website built with Astro and Tailwind CSS. Interestingly, each page here is an actual markdown file in the code.
+A VSCode-inspired personal website built with Astro and Tailwind CSS. If you were curious, each page here is an actual markdown file in the code.
 
 Github: <a href="https://github.com/keslerlee/personal-website" target="_blank">Link</a>
 
