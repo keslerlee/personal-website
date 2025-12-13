@@ -29,7 +29,7 @@ order: 3
 
 I’m Kesler, a junior studying Computer Science at Arizona State University. My technical interests lie in data pipelines and machine learning, with a focus on resilient and scalable software that adapts to new challenges.
 
-Outside of programming, I love reading light novels, rock climbing, and playing Clash Royale.
+Outside of programming, I love doing calisthenics, reading light novels, rock climbing, and playing video games (e.g. Clash Royale and Minecraft).
 
 >> [!NOTE]
 >> If you have any questions, feel free to send an email. I'll get back to you as soon as I can!
