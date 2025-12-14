@@ -27,7 +27,7 @@ Download from ChatTriggers: <a href="https://chattriggers.com/modules/v/AutoKick
 
 View on Github: <a href="https://github.com/keslerlee/AutoKick" target="_blank">AutoKick</a>, <a href="https://github.com/keslerlee/RouteLoader" target="_blank">RouteLoader</a>, <a href="https://github.com/keslerlee/QuickPet" target="_blank">QuickPet</a>, <a href="https://github.com/keslerlee/AnvilEnchants" target="_blank">AnvilEnchants</a>, <a href="https://github.com/keslerlee/ToggleSprint" target="_blank">ToggleSprint</a>
 
-`Minecraft` `Client` `Javascript` `Java`
+`Minecraft` `Client` `Javascript` `Java` `JSON` `Rhino`
 
 > [!TIP]
 > Want to see more? Check out my GitHub for additional projects and contributions!
