@@ -66,8 +66,13 @@ import TabBar from "../components/TabBar.astro";
                     class="flex-1 min-h-0 overflow-auto p-6 bg-bg-main flex justify-center items-center"
                 >
                     <div class="text-text-muted text-sm">
-                        &copy; {new Date().getFullYear()} Kesler Lee. All rights
+                        &copy; <span id="copyright-year"></span> Kesler Lee. All rights
                         reserved.
+                        <script is:inline>
+                            document.getElementById(
+                                "copyright-year",
+                            ).textContent = new Date().getFullYear();
+                        </script>
                     </div>
                 </main>
             </div>
